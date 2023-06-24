@@ -2,6 +2,8 @@ package com.ai.chatpan.ui
 
 import androidx.lifecycle.MutableLiveData
 import com.ai.chatpan.data.DataRepository
+import com.ai.chatpan.data.bean.AnswerHistory
+import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
 import com.ai.chatpan.data.bean.RequestBean
 import com.btpj.lib_base.base.BaseViewModel
@@ -19,8 +21,12 @@ import okhttp3.RequestBody
 
 class MainViewModel : BaseViewModel() {
 
-    private val _askAnswer = MutableLiveData<ChatPanBean>()
+    private val _askAnswer = MutableLiveData<BaseChatBean>()
     val askAnswer = _askAnswer
+
+    private val _askHistory = MutableLiveData<List<BaseChatBean>>(emptyList())
+    val askHistory = _askHistory
+
     override fun start() {
 
     }
@@ -47,5 +53,15 @@ class MainViewModel : BaseViewModel() {
             })
         })
 
+    }
+
+    fun getOuterDialogHistory(roomUUID: String, outerId: String) {
+        launch({
+            handleRequest(DataRepository.getOuterDialogHistory(roomUUID, outerId), {
+                LogUtil.e("result  :" + it.toString())
+
+                _askHistory.value = it.data!!
+            })
+        })
     }
 }

@@ -4,42 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data></data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/ai_back"
+        android:paddingBottom="10dp">
 
         <ImageView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/iv_head"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/gpt_head"
-            android:layout_width="20dp"
-            android:layout_height="20dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_name"
-            android:text="ChatPan"
-            android:textSize="14sp"
-            android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@id/iv_head"
-            app:layout_constraintTop_toTopOf="@id/iv_head"
-            app:layout_constraintBottom_toBottomOf="@id/iv_head"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="ChatPan"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_head"
+            app:layout_constraintStart_toEndOf="@id/iv_head"
+            app:layout_constraintTop_toTopOf="@id/iv_head" />
 
         <TextView
-            android:textSize="12sp"
+            android:id="@+id/tv_question"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/iv_head"
-            tools:text="android textview 打字机效果。"
-            android:id="@+id/tv_question"
-            app:layout_constraintStart_toStartOf="@id/tv_name"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/iv_head"
+            tools:text="android textview 打字机效果。" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

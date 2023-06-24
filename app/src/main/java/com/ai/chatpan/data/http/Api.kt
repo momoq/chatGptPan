@@ -1,5 +1,7 @@
 package com.ai.chatpan.data.http
 
+import com.ai.chatpan.data.bean.AnswerHistory
+import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
 import com.btpj.lib_base.data.bean.ApiResponse
 import com.btpj.lib_base.data.bean.PageResponse
@@ -13,11 +15,17 @@ import retrofit2.http.*
  */
 interface Api {
 
-    /** 登录 */
+    /** 提问 */
     @POST("askByOuterId")
     suspend fun askQuestion(
         @Body  requestBody: RequestBody
-    ): ApiResponse<ChatPanBean>
+    ): ApiResponse<BaseChatBean>
+
+
+
+    /** 历史问题和答案 */
+    @GET("room/outerDialogHistory")
+    suspend fun getOuterDialogHistory(  @Query("roomUUID") roomUUID:String,  @Query("outerId") outerId:String): ApiResponse<List<BaseChatBean>>
 
 
 }

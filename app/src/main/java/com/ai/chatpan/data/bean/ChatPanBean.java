@@ -2,7 +2,7 @@ package com.ai.chatpan.data.bean;
 
 import java.util.List;
 
-public class ChatPanBean {
+public class ChatPanBean extends BaseChatBean{
 
     /**
      * id : 3131
