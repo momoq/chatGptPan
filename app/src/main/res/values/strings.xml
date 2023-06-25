@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ChatPan</string>
+    <string name="ask_skill">问答技巧</string>
+    <string name="ask_skill1">请简短描述您的问题</string>
+    <string name="ask_skill2">可以回答AI、抖音、数字人问题</string>
+    <string name="ask_skill3">基于丰年数据库，仅限已投喂资料</string>
+
 </resources>

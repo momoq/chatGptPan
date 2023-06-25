@@ -26,9 +26,16 @@ class MainViewModel : BaseViewModel() {
 
     private val _askHistory = MutableLiveData<List<BaseChatBean>>(emptyList())
     val askHistory = _askHistory
-
+    private val _invitationCode = MutableLiveData<Boolean>(false)
+    val invitationCode = _invitationCode
     override fun start() {
 
+    }
+
+    fun checkInvitationCode(invitationCode: String) {
+        launch({
+
+        })
     }
 
     fun askQuestion(

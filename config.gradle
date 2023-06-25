@@ -61,6 +61,7 @@ ext {
             leakcanary                   : 'com.squareup.leakcanary:leakcanary-android:2.9.1',
 
             eventbus                     : 'org.greenrobot:eventbus-java:3.3.1',
-            autosize                     : 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+            autosize                     : 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1',
+            blankj                        :'com.blankj:utilcodex:1.31.1'
     ]
 }
