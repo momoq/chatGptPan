@@ -12,55 +12,15 @@
         android:background="@color/ai_back"
         android:paddingBottom="10dp">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cons_ask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/iv_head"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/gpt_head"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="ChatPan"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/iv_head"
-                app:layout_constraintStart_toEndOf="@id/iv_head"
-                app:layout_constraintTop_toTopOf="@id/iv_head" />
-
-            <TextView
-                android:id="@+id/tv_answer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/tv_name"
-                app:layout_constraintTop_toBottomOf="@+id/iv_head"
-                tools:text="在此示例中，我们使用了一个Runnable对象来实现打字机效果。该Runnable对象会不断添加文本到TextView中，每次添加一个字符，并在下一次执行前延迟一段时间，以模拟打字机效果。在此示例中，我们还使用了一个随机数来延迟下一个字符的时间，以使效果更加真实。" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_answer"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/ai_back"
             android:paddingBottom="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/cons_ask">
+          >
 
             <ImageView
                 android:id="@+id/iv_head_gpt"
@@ -96,6 +56,48 @@
                 app:layout_constraintStart_toStartOf="@id/tv_gpt_name"
                 app:layout_constraintTop_toBottomOf="@+id/iv_head_gpt"
                 tools:text="android textview 打字机效果。" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_answer"
+            app:layout_constraintTop_toBottomOf="@id/cons_ask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           >
+
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gpt_head"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="ChatPan"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_head"
+                app:layout_constraintStart_toEndOf="@id/iv_head"
+                app:layout_constraintTop_toTopOf="@id/iv_head" />
+
+            <TextView
+                android:id="@+id/tv_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@+id/iv_head"
+                tools:text="在此示例中，我们使用了一个Runnable对象来实现打字机效果。该Runnable对象会不断添加文本到TextView中，每次添加一个字符，并在下一次执行前延迟一段时间，以模拟打字机效果。在此示例中，我们还使用了一个随机数来延迟下一个字符的时间，以使效果更加真实。" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
