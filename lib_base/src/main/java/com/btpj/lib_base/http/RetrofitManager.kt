@@ -6,15 +6,18 @@ import com.btpj.lib_base.http.interceptor.CacheInterceptor
 import com.btpj.lib_base.http.interceptor.HeaderInterceptor
 import com.btpj.lib_base.http.interceptor.logInterceptor
 import com.btpj.lib_base.utils.LogUtil
-import com.franmontiel.persistentcookiejar.PersistentCookieJar
-import com.franmontiel.persistentcookiejar.cache.SetCookieCache
-import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
+//import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+//import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import okhttp3.Cache
+import okhttp3.Cookie
+import okhttp3.CookieJar
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
+
 
 /**
  * Retrofit管理类
@@ -26,11 +29,28 @@ object RetrofitManager {
     private const val TIME_OUT_SECONDS = 10
 
     /** 请求cookie */
-    val cookieJar: PersistentCookieJar by lazy {
-        PersistentCookieJar(
-            SetCookieCache(),
-            SharedPrefsCookiePersistor(appContext)
-        )
+//    val cookieJar: CookieJar by lazy {
+//        okhttp3.CookieJar(
+//            SetCookieCache(),
+//            SharedPrefsCookiePersistor(appContext)
+//        )
+//    }
+
+    class MyCookieJar : CookieJar {
+        private val cookies: MutableList<Cookie> = ArrayList()
+        override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
+            this.cookies.addAll(cookies)
+        }
+
+        override fun loadForRequest(url: HttpUrl): List<Cookie> {
+            val result: MutableList<Cookie> = ArrayList()
+            for (cookie in cookies) {
+                if (cookie.matches(url)) {
+                    result.add(cookie)
+                }
+            }
+            return result
+        }
     }
 
     /** 请求根地址 */
@@ -48,7 +68,7 @@ object RetrofitManager {
             .addInterceptor(CacheInterceptor(30))
             // 请求超时时间
             .connectTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
-            .cookieJar(cookieJar)
+            .cookieJar(MyCookieJar())
             .build()
 
     /**

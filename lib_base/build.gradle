@@ -67,7 +67,7 @@ dependencies {
     api rootProject.ext.dependencies.retrofit
     api rootProject.ext.dependencies.converterGson
     api rootProject.ext.dependencies.loggingInterceptor
-    api rootProject.ext.dependencies.PersistentCookieJar
+//    api rootProject.ext.dependencies.PersistentCookieJar
     //utils
     api rootProject.ext.dependencies.blankj
 }
