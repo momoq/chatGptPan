@@ -1,5 +1,6 @@
 package com.ai.chatpan.ui
 
+import android.animation.Animator
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
 import com.ai.chatpan.databinding.ActivityMainBinding
 import com.ai.chatpan.ui.main.ChatAdapter
+import com.airbnb.lottie.LottieAnimationView
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.DeviceUtils
 import com.btpj.lib_base.utils.LogUtil
@@ -76,56 +78,34 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
             }else{
                 mBinding.consFirst.visibility = View.GONE
 //                mBinding.rlMyAnswer.visibility =View.VISIBLE
-                mViewModel.getOuterDialogHistory("64f8791f-c1de-427d-990b-9cc7eb8ff472", deviceId)
+
             }
-/*
-            Glide.with(context)
-                .asGif()
-                .load(R.drawable.chatpan_fn)
-                .addListener(object : RequestListener<GifDrawable> {
-                    override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
-                        target: Target<GifDrawable>?,
-                        dataSource: DataSource?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        if (target is ImageViewTarget<*>) {
-                            val imageView = target.view as ImageView
-                            val animationDrawable = imageView.drawable as? AnimationDrawable
+            val lottieAnimationView = findViewById<LottieAnimationView>(R.id.lottie_animation_view)
+            lottieAnimationView.setAnimation(R.raw.chan_pan)
+            lottieAnimationView.playAnimation()
 
-                            animationDrawable?.apply {
-                                isOneShot = true // 设置仅播放一次
-                                // 添加动画播放结束的监听器
-                                callback = object : GifDrawable.Callback {
-                                    override fun invalidateDrawable(drawable: GifDrawable) {
-                                        // 动画播放结束时的操作
-                                    }
 
-                                    override fun scheduleDrawable(drawable: GifDrawable, runnable: Runnable, l: Long) {
 
-                                    }
 
-                                    override fun unscheduleDrawable(drawable: GifDrawable, runnable: Runnable) {
+            lottieAnimationView.addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {
+                    // 动画开始播放时的回调
+                }
 
-                                    }
-                                }
-                            }
-                        }
-                        return false
-                    }
+                override fun onAnimationEnd(animation: Animator) {
+                    // 动画播放完成时的回调
+                    mViewModel.getOuterDialogHistory("64f8791f-c1de-427d-990b-9cc7eb8ff472", deviceId)
 
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: Target<GifDrawable>?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        return false
-                    }
-                })
-                .into(mBinding.ivLoading);*/
+                }
 
+                override fun onAnimationCancel(animation: Animator) {
+                    // 动画被取消时的回调
+                }
+
+                override fun onAnimationRepeat(animation: Animator) {
+                    // 动画重复播放时的回调
+                }
+            })
         }
 
 
@@ -152,6 +132,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
         }
 
         mViewModel.askHistory.observeForever {
+            mBinding.rlMyAnswer.visibility =View.VISIBLE
 //            mBinding.consFirst.visibility = View.GONE
             for (chatBean: BaseChatBean in it) {
                 chatBean.type = 2
@@ -164,4 +145,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mBinding.lottieAnimationView.cancelAnimation()
+        mBinding.lottieAnimationView.clearAnimation()
+    }
 }
