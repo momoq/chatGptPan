@@ -1,7 +1,10 @@
 package com.ai.chatpan.ui
 
+import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ai.chatpan.R
 import com.ai.chatpan.base.BaseActivity
@@ -12,7 +15,13 @@ import com.ai.chatpan.ui.main.ChatAdapter
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.DeviceUtils
 import com.btpj.lib_base.utils.LogUtil
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.ImageViewTarget
 import com.tencent.bugly.crashreport.CrashReport
+import pl.droidsonroids.gif.GifDrawable
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.activity_main) {
     var subjectId: String = "111"
@@ -66,10 +75,56 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
 
             }else{
                 mBinding.consFirst.visibility = View.GONE
-
+//                mBinding.rlMyAnswer.visibility =View.VISIBLE
                 mViewModel.getOuterDialogHistory("64f8791f-c1de-427d-990b-9cc7eb8ff472", deviceId)
             }
+/*
+            Glide.with(context)
+                .asGif()
+                .load(R.drawable.chatpan_fn)
+                .addListener(object : RequestListener<GifDrawable> {
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<GifDrawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        if (target is ImageViewTarget<*>) {
+                            val imageView = target.view as ImageView
+                            val animationDrawable = imageView.drawable as? AnimationDrawable
 
+                            animationDrawable?.apply {
+                                isOneShot = true // 设置仅播放一次
+                                // 添加动画播放结束的监听器
+                                callback = object : GifDrawable.Callback {
+                                    override fun invalidateDrawable(drawable: GifDrawable) {
+                                        // 动画播放结束时的操作
+                                    }
+
+                                    override fun scheduleDrawable(drawable: GifDrawable, runnable: Runnable, l: Long) {
+
+                                    }
+
+                                    override fun unscheduleDrawable(drawable: GifDrawable, runnable: Runnable) {
+
+                                    }
+                                }
+                            }
+                        }
+                        return false
+                    }
+
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<GifDrawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
+                })
+                .into(mBinding.ivLoading);*/
 
         }
 
@@ -77,6 +132,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
         if(mViewModel.invitationCode.value == true){
             mViewModel.getOuterDialogHistory("64f8791f-c1de-427d-990b-9cc7eb8ff472", deviceId)
         }
+
 
     }
 

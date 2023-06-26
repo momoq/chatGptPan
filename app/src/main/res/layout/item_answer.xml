@@ -17,7 +17,7 @@
             android:id="@+id/iv_head"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/gpt_head"
+            android:src="@mipmap/ic_launcher"
             android:layout_width="20dp"
             android:layout_height="20dp"/>
 
