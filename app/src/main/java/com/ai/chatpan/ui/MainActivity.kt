@@ -23,6 +23,8 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.ImageViewTarget
 import com.tencent.bugly.crashreport.CrashReport
+import com.tencent.mmkv.MMKV
+import kotlinx.coroutines.delay
 import pl.droidsonroids.gif.GifDrawable
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.activity_main) {
@@ -31,18 +33,26 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
     var assistantUUID: String = "18914f7a-9a0c-4314-9f3b-365481809b97"
     var chatList = ArrayList<BaseChatBean>()
     private val mAdapter: ChatAdapter = ChatAdapter(chatList)
-    var TAG ="MainActivity"
-    var deviceId :String = DeviceUtils.getUniqueDeviceId()
+    var TAG = "MainActivity"
+    var deviceId: String = DeviceUtils.getUniqueDeviceId()
 
-
+    var chatInstall:Boolean =false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //        Bugly.init(applicationContext, "83868d6604", false);
-        CrashReport.initCrashReport(applicationContext, "83868d6604", false)
+//        CrashReport.initCrashReport(applicationContext, "83868d6604", false)
+        chatInstall = MMKV.defaultMMKV().decodeBool("chatPanInstall")
+        if (!chatInstall) {
+            chatInstall=true
+            LogUtil.d(TAG, "chatInstall : $chatInstall")
+            MMKV.defaultMMKV().encode("chatPanInstall", true)
+        }
+
     }
+
     override fun initView(savedInstanceState: Bundle?) {
         var context = this
-        LogUtil.d(TAG,"devceid : $deviceId")
+        LogUtil.d(TAG, "devceid : $deviceId")
 
 
         mBinding.apply {
@@ -53,12 +63,13 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
             mAdapter.submitList(chatList)
 
             ivAsk.setOnClickListener {
+
                 mViewModel.askQuestion(
                     subjectId,
                     deviceId,
                     roomUUID,
                     assistantUUID,
-                    etInput.text.toString()
+                    etInput.text.toString().trim()
                 )
 
                 var chatBean = ChatPanBean()
@@ -72,20 +83,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
                 etInput.text.clear()
             }
 
-            if (AppUtils.isFirstTimeInstall()){
-                mBinding.consFirst.visibility = View.VISIBLE
 
-            }else{
-                mBinding.consFirst.visibility = View.GONE
-//                mBinding.rlMyAnswer.visibility =View.VISIBLE
-
-            }
             val lottieAnimationView = findViewById<LottieAnimationView>(R.id.lottie_animation_view)
             lottieAnimationView.setAnimation(R.raw.chan_pan)
             lottieAnimationView.playAnimation()
-
-
-
 
             lottieAnimationView.addAnimatorListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
@@ -93,8 +94,24 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
-                    // 动画播放完成时的回调
-                    mViewModel.getOuterDialogHistory("64f8791f-c1de-427d-990b-9cc7eb8ff472", deviceId)
+
+                    lottieAnimationView.postDelayed(Runnable {
+                        lottieAnimationView.visibility = View.GONE
+
+                        if (!chatInstall) {
+                            LogUtil.d(TAG, "chatInstall 2: $chatInstall")
+                            mBinding.consFirst.visibility = View.VISIBLE
+                        } else {
+                            LogUtil.d(TAG, "chatInstall 3: $chatInstall")
+                            mBinding.consFirst.visibility = View.GONE
+                            // 动画播放完成时的回调
+                            mViewModel.getOuterDialogHistory(
+                                "64f8791f-c1de-427d-990b-9cc7eb8ff472",
+                                deviceId
+                            )
+                        }
+                    }, 1000)
+
 
                 }
 
@@ -109,7 +126,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
         }
 
 
-        if(mViewModel.invitationCode.value == true){
+        if (mViewModel.invitationCode.value == true) {
             mViewModel.getOuterDialogHistory("64f8791f-c1de-427d-990b-9cc7eb8ff472", deviceId)
         }
 
@@ -121,19 +138,18 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
         super.createObserve()
 
         mViewModel.askAnswer.observeForever {
-
-            LogUtil.e(TAG,"askAnswer : " + it.toString())
+            mBinding.consFirst.visibility = View.GONE
+            LogUtil.e(TAG, "askAnswer : " + it.toString())
             it.type = 1
             chatList.add(it)
             mAdapter.notifyDataSetChanged()
             val lastItemPosition: Int = mAdapter.getItemCount() - 1
             mBinding.rlMyAnswer.scrollToPosition(lastItemPosition)
-//            mBinding.consFirst.visibility = View.GONE
         }
 
         mViewModel.askHistory.observeForever {
-            mBinding.rlMyAnswer.visibility =View.VISIBLE
-//            mBinding.consFirst.visibility = View.GONE
+            mBinding.consFirst.visibility = View.GONE
+            mBinding.rlMyAnswer.visibility = View.VISIBLE
             for (chatBean: BaseChatBean in it) {
                 chatBean.type = 2
                 chatList.add(chatBean)
@@ -141,8 +157,13 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
             mAdapter.notifyDataSetChanged()
             val lastItemPosition: Int = mAdapter.getItemCount() - 1
             mBinding.rlMyAnswer.scrollToPosition(lastItemPosition)
-            LogUtil.e(TAG,"askHistory : " + it.toString())
+            LogUtil.e(TAG, "askHistory : " + it.toString())
         }
+    }
+
+    override fun requestError(msg: String?) {
+        super.requestError(msg)
+        LogUtil.e(TAG, "requestError : " + msg)
     }
 
     override fun onDestroy() {

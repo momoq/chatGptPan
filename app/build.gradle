@@ -58,6 +58,19 @@ android {
     }
 
 }
+// 配置自动打包任务
+task autoPackage(type: Exec) {
+    // 定义待执行的打包命令
+    commandLine './gradlew', ':app:assembleRelease'
+}
+
+// 定义打包任务成功时的输出
+autoPackage.doLast {
+    println "Auto package has completed successfully!"
+}
+
+// 将 autoPackage 任务添加到 assembleRelease 任务的依赖中
+//assembleRelease.dependsOn autoPackage
 
 dependencies {
     implementation project(path: ':lib_base')

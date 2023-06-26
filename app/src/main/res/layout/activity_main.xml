@@ -15,28 +15,25 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:visibility="gone"
-                android:id="@+id/iv_loading"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-                android:layout_width="300dp"
-                android:layout_height="150dp"/>
+
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottie_animation_view"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="@dimen/qb_px_250"
+                android:layout_height="@dimen/qb_px_100"
+                android:layout_marginTop="@dimen/qb_px_206"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:lottie_autoPlay="true"
-                app:lottie_loop="false"
-                android:layout_width="250dp"
-                android:layout_height="100dp"/>
+                app:lottie_loop="false" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -44,23 +41,29 @@
             android:id="@+id/rl_my_answer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/qb_px_10"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/cons_bottom"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_question" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cons_first"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/iv_prompt"
-                android:layout_width="72dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="206dp"
+                android:layout_width="@dimen/qb_px_72"
+                android:layout_height="@dimen/qb_px_80"
+                android:layout_marginTop="@dimen/qb_px_206"
                 android:src="@mipmap/iv_prompt"
                 android:textColor="@color/text_color1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +74,7 @@
                 android:id="@+id/tv_prompt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="@dimen/qb_px_6"
                 android:gravity="center"
                 android:text="@string/ask_skill"
                 android:textColor="@color/text_color1"
@@ -85,12 +88,12 @@
                 android:id="@+id/tv_prompt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="41dp"
+                android:layout_marginTop="@dimen/qb_px_41"
                 android:background="@drawable/text_back_shape"
-                android:paddingStart="35dp"
-                android:paddingTop="6dp"
-                android:paddingEnd="35dp"
-                android:paddingBottom="6dp"
+                android:paddingStart="@dimen/qb_px_35"
+                android:paddingTop="@dimen/qb_px_6"
+                android:paddingEnd="@dimen/qb_px_35"
+                android:paddingBottom="@dimen/qb_px_6"
                 android:text="@string/ask_skill1"
                 android:textColor="@color/text_color1"
                 android:textSize="14sp"
@@ -102,13 +105,13 @@
                 android:id="@+id/tv_prompt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="@dimen/qb_px_37"
                 android:background="@drawable/text_back_shape"
                 android:gravity="center"
-                android:paddingStart="35dp"
-                android:paddingTop="6dp"
-                android:paddingEnd="35dp"
-                android:paddingBottom="6dp"
+                android:paddingStart="@dimen/qb_px_35"
+                android:paddingTop="@dimen/qb_px_6"
+                android:paddingEnd="@dimen/qb_px_35"
+                android:paddingBottom="@dimen/qb_px_6"
                 android:text="@string/ask_skill2"
                 android:textColor="@color/text_color1"
                 android:textSize="14sp"
@@ -117,16 +120,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_prompt1" />
 
             <TextView
-                android:layout_marginTop="37dp"
                 android:id="@+id/tv_prompt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qb_px_37"
                 android:background="@drawable/text_back_shape"
                 android:gravity="center"
-                android:paddingStart="35dp"
-                android:paddingTop="6dp"
-                android:paddingEnd="35dp"
-                android:paddingBottom="6dp"
+                android:paddingStart="@dimen/qb_px_35"
+                android:paddingTop="@dimen/qb_px_6"
+                android:paddingEnd="@dimen/qb_px_35"
+                android:paddingBottom="@dimen/qb_px_6"
                 android:text="@string/ask_skill2"
                 android:textColor="@color/text_color1"
                 android:textSize="14sp"
@@ -139,29 +142,31 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cons_bottom"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="45dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_marginBottom="@dimen/qb_px_45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <EditText
 
-                app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/et_input"
-
                 android:layout_width="0dp"
-                android:layout_marginStart="17dp"
+
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/qb_px_17"
+                android:layout_marginEnd="@dimen/qb_px_12"
                 android:background="@drawable/et_back"
-                android:hint="请输入你的问题"
-                app:layout_constraintEnd_toStartOf="@+id/iv_ask"
-                android:padding="10dp"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:layout_marginEnd="12dp"
+                android:hint="请输入你的问题"
+                android:padding="@dimen/qb_px_10"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_ask"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <!-- <TextView
                  android:id="@+id/tv_ans"
@@ -172,10 +177,10 @@
                  />-->
             <ImageView
                 android:id="@+id/iv_ask"
-                android:layout_width="32dp"
-                android:layout_height="28dp"
+                android:layout_width="@dimen/qb_px_32"
+                android:layout_height="@dimen/qb_px_28"
 
-                android:layout_marginEnd="23dp"
+                android:layout_marginEnd="@dimen/qb_px_23"
                 android:src="@mipmap/send"
                 android:text="提问"
                 app:layout_constraintBottom_toBottomOf="parent"

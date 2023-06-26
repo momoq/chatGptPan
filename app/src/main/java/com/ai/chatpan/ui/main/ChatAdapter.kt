@@ -4,11 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ai.chatpan.R
 import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
 import com.ai.chatpan.databinding.ItemAnswerBinding
 import com.ai.chatpan.databinding.ItemHistoryBinding
 import com.ai.chatpan.databinding.ItemQuestionBinding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseMultiItemAdapter
 
 class ChatAdapter(data: ArrayList<BaseChatBean>) : BaseMultiItemAdapter<BaseChatBean>() {
@@ -34,12 +37,13 @@ class ChatAdapter(data: ArrayList<BaseChatBean>) : BaseMultiItemAdapter<BaseChat
                     // 创建 viewholder
                     val viewBinding2 =
                         ItemQuestionBinding.inflate(LayoutInflater.from(context), parent, false)
+
                     return ItemAsk(viewBinding2)
                 }
 
                 override fun onBind(holder: ItemAsk, position: Int, item: BaseChatBean?) {
                     // 绑定 item 数据
-                    holder.viewQuestionBinding.tvQuestion.text = item!!.question
+                    holder.viewQuestionBinding.tvQuestion.text = item!!.question.trim()
 
                 }
             }).addItemType(
@@ -53,12 +57,13 @@ class ChatAdapter(data: ArrayList<BaseChatBean>) : BaseMultiItemAdapter<BaseChat
                     // 创建 viewholder
                     val viewBinding =
                         ItemAnswerBinding.inflate(LayoutInflater.from(context), parent, false)
+
                     return ItemAnswer(viewBinding)
                 }
 
                 override fun onBind(holder: ItemAnswer, position: Int, item: BaseChatBean?) {
                     // 绑定 item 数据
-                    holder.viewAnswerBinding.tvAnswer.text = item!!.answer
+                    holder.viewAnswerBinding.tvAnswer.text = item!!.answer.trim()
                 }
 
             })
@@ -66,8 +71,8 @@ class ChatAdapter(data: ArrayList<BaseChatBean>) : BaseMultiItemAdapter<BaseChat
                 object : OnMultiItemAdapterListener<BaseChatBean, ItemHistory> {
                     override fun onBind(holder: ItemHistory, position: Int, item: BaseChatBean?) {
                         //                        // 绑定 item 数据
-                        holder.viewItemHistory.tvQuestion.text = item!!.question
-                        holder.viewItemHistory.tvAnswer.text = item!!.answer
+                        holder.viewItemHistory.tvQuestion.text = item!!.question.trim()
+                        holder.viewItemHistory.tvAnswer.text = item!!.answer.trim()
 
                     }
 

@@ -8,6 +8,7 @@ import androidx.multidex.MultiDexApplication;
 
 import com.btpj.lib_base.BaseApp;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.mmkv.MMKV;
 
 public class App extends BaseApp {
 

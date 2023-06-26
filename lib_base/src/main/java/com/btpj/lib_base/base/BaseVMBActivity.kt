@@ -80,17 +80,25 @@ abstract class BaseVMBActivity<VM : BaseViewModel, B : ViewDataBinding>(private 
                 requestError(it.message)
                 LogUtil.e("网络请求错误：${it.message}")
                 when (it) {
-                    is SocketTimeoutException -> ToastUtil.showShort(
-                        this@BaseVMBActivity,
-                        getString(R.string.request_time_out)
-                    )
-                    is ConnectException, is UnknownHostException -> ToastUtil.showShort(
-                        this@BaseVMBActivity,
-                        getString(R.string.network_error)
-                    )
-                    else -> ToastUtil.showShort(
-                        this@BaseVMBActivity, it.message ?: getString(R.string.response_error)
-                    )
+                    is SocketTimeoutException -> {
+                      /*  ToastUtil.showShort(
+                            this@BaseVMBActivity,
+                            getString(R.string.request_time_out)
+                        )*/
+                    }
+
+                    is ConnectException, is UnknownHostException -> {
+                       /* ToastUtil.showShort(
+                            this@BaseVMBActivity,
+                            getString(R.string.network_error)
+                        )*/
+                    }
+
+                    else -> {
+                      /*  ToastUtil.showShort(
+                            this@BaseVMBActivity, it.message ?: getString(R.string.response_error)
+                        )*/
+                    }
                 }
             }
 
@@ -98,7 +106,7 @@ abstract class BaseVMBActivity<VM : BaseViewModel, B : ViewDataBinding>(private 
             errorResponse.observe(this@BaseVMBActivity) {
                 requestError(it?.msg)
                 it?.msg?.run {
-                    ToastUtil.showShort(this@BaseVMBActivity, this)
+//                    ToastUtil.showShort(this@BaseVMBActivity, this)
                 }
             }
         }

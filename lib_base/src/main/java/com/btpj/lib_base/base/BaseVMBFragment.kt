@@ -99,7 +99,8 @@ abstract class BaseVMBFragment<VM : BaseViewModel, B : ViewDataBinding>(private 
                         requireContext(),
                         getString(R.string.network_error)
                     )
-                    else -> ToastUtil.showShort(
+                    else ->
+                        ToastUtil.showShort(
                         requireContext(), it.message ?: getString(R.string.response_error)
                     )
                 }
@@ -109,7 +110,7 @@ abstract class BaseVMBFragment<VM : BaseViewModel, B : ViewDataBinding>(private 
             errorResponse.observe(viewLifecycleOwner) {
                 requestError(it?.msg)
                 it?.msg?.run {
-                    ToastUtil.showShort(requireContext(), this)
+//                    ToastUtil.showShort(requireContext(), this)
                 }
             }
         }

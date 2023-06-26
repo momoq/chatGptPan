@@ -9,24 +9,24 @@
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/ai_back"
-        android:paddingBottom="10dp">
+        android:paddingBottom="@dimen/qb_px_10">
 
         <ImageView
             android:id="@+id/iv_head"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/gpt_head"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="@dimen/qb_px_45"
+            android:layout_height="@dimen/qb_px_45"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            android:layout_marginTop="@dimen/qb_px_10"
+            android:background="@mipmap/user_icon"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_name"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/qb_px_10"
             android:text="ChatPan"
             android:textColor="@color/white"
             android:textSize="14sp"
@@ -35,16 +35,21 @@
             app:layout_constraintTop_toTopOf="@id/iv_head" />
 
         <TextView
+            android:paddingLeft="@dimen/qb_px_20"
+            android:paddingRight="@dimen/qb_px_20"
+            android:paddingTop="@dimen/qb_px_15"
+            android:paddingBottom="@dimen/qb_px_15"
             android:id="@+id/tv_question"
             android:layout_width="0dp"
+            android:maxWidth="@dimen/qb_px_196"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="@dimen/qb_px_28"
+            android:layout_marginEnd="@dimen/qb_px_10"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_name"
-            app:layout_constraintTop_toBottomOf="@+id/iv_head"
+            android:background="@drawable/answer_back"
+            app:layout_constraintEnd_toStartOf="@id/iv_head"
+            app:layout_constraintTop_toTopOf="@+id/iv_head"
             tools:text="android textview 打字机效果。" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
