@@ -15,17 +15,20 @@ public class HeaderInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        Request original = chain.request();
 
-        //向 Request 中添加 Header
-        Request.Builder requestBuilder = original.newBuilder()
-                .header("Authorization","Bearer"+ authToken);
 
-        Request request = requestBuilder.build();
+
         try {
+            Request original = chain.request();
+            Request.Builder requestBuilder = original.newBuilder()
+                    .header("Authorization","Bearer "+ authToken);
+
+            Request request = requestBuilder.build();
             return chain.proceed(request);
-        } catch (IOException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
+
 }

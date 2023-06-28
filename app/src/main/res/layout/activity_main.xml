@@ -153,7 +153,6 @@
 
                 android:id="@+id/et_input"
                 android:layout_width="0dp"
-
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/qb_px_17"
                 android:layout_marginEnd="@dimen/qb_px_12"

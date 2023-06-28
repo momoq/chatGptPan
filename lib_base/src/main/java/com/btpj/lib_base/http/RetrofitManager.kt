@@ -6,8 +6,6 @@ import com.btpj.lib_base.http.interceptor.CacheInterceptor
 import com.btpj.lib_base.http.interceptor.HeaderInterceptor
 import com.btpj.lib_base.http.interceptor.logInterceptor
 import com.btpj.lib_base.utils.LogUtil
-//import com.franmontiel.persistentcookiejar.cache.SetCookieCache
-//import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import okhttp3.Cache
 import okhttp3.Cookie
 import okhttp3.CookieJar
@@ -26,7 +24,7 @@ import java.util.concurrent.TimeUnit
  */
 object RetrofitManager {
     /** 请求超时时间 */
-    private const val TIME_OUT_SECONDS = 10
+    private const val TIME_OUT_SECONDS = 30
 
     /** 请求cookie */
 //    val cookieJar: CookieJar by lazy {
@@ -60,12 +58,22 @@ object RetrofitManager {
     private val client: OkHttpClient
         get() = OkHttpClient.Builder()
             // 请求过滤器
-            .addInterceptor(HeaderInterceptor("0648a94fc1f58091248eb43dad68a99b54b95e62b4f4f703a2368133ecd4b83a"))
+//            .addInterceptor(HeaderInterceptor("0648a94fc1f58091248eb43dad68a99b54b95e62b4f4f703a2368133ecd4b83a"))
+            .addInterceptor { chain ->
+                val request = chain.request()
+                val builder = request.newBuilder()
+                    .header("Connection", "Keep-Alive")
+                    .addHeader("Authorization", "Bearer "+ "0648a94fc1f58091248eb43dad68a99b54b95e62b4f4f703a2368133ecd4b83a")
+                val newRequest = builder.build()
+                chain.proceed(newRequest)
+            }
+            .retryOnConnectionFailure(true)
             .addInterceptor(logInterceptor)
             //设置缓存配置,缓存最大10M,设置了缓存之后可缓存请求的数据到data/data/包名/cache/net_cache目录中
             .cache(Cache(File(appContext.cacheDir, "net_cache"), 10 * 1024 * 1024))
             //添加缓存拦截器 可传入缓存天数
             .addInterceptor(CacheInterceptor(30))
+            .readTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
             // 请求超时时间
             .connectTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
             .cookieJar(MyCookieJar())
@@ -79,8 +87,8 @@ object RetrofitManager {
         return Retrofit.Builder()
             .client(client)
             // 使用Moshi更适合Kotlin
-            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(baseUrl ?: BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(serviceClass)
     }

@@ -22,7 +22,7 @@ public class App extends BaseApp {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(base);
-        CrashReport.initCrashReport(getApplicationContext(), "83868d6604", false);
+        CrashReport.initCrashReport(getApplicationContext(), "83868d6604", true);
 
     }
 }
