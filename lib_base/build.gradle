@@ -71,4 +71,7 @@ dependencies {
 //    api rootProject.ext.dependencies.PersistentCookieJar
     //utils
     api rootProject.ext.dependencies.blankj
+
+    api rootProject.ext.dependencies.pgy
+    api rootProject.ext.dependencies.buglyPo
 }

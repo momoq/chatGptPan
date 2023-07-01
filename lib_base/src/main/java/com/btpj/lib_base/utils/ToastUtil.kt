@@ -19,7 +19,7 @@ object ToastUtil {
      * @param msg 显示的消息
      */
     fun showShort(context: Context, msg: String) {
-        Toast.makeText(context.applicationContext, msg, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context.applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
 
     /**

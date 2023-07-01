@@ -11,6 +11,7 @@ import com.btpj.lib_base.ext.hideLoading
 import com.btpj.lib_base.utils.LogUtil
 import com.btpj.lib_base.utils.StatusBarUtil
 import com.btpj.lib_base.utils.ToastUtil
+import com.pgyer.pgyersdk.PgyerSDKManager
 import java.lang.reflect.ParameterizedType
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -79,6 +80,7 @@ abstract class BaseVMBActivity<VM : BaseViewModel, B : ViewDataBinding>(private 
             exception.observe(this@BaseVMBActivity) {
                 requestError(it.message)
                 LogUtil.e("网络请求错误：${it.message}")
+                PgyerSDKManager.reportException(it)
                 when (it) {
                     is SocketTimeoutException -> {
                       /*  ToastUtil.showShort(
@@ -105,7 +107,9 @@ abstract class BaseVMBActivity<VM : BaseViewModel, B : ViewDataBinding>(private 
             // 全局服务器返回的错误信息监听
             errorResponse.observe(this@BaseVMBActivity) {
                 requestError(it?.msg)
+
                 it?.msg?.run {
+
 //                    ToastUtil.showShort(this@BaseVMBActivity, this)
                 }
             }

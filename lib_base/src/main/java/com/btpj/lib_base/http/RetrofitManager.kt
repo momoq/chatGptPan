@@ -58,7 +58,6 @@ object RetrofitManager {
     private val client: OkHttpClient
         get() = OkHttpClient.Builder()
             // 请求过滤器
-//            .addInterceptor(HeaderInterceptor("0648a94fc1f58091248eb43dad68a99b54b95e62b4f4f703a2368133ecd4b83a"))
             .addInterceptor { chain ->
                 val request = chain.request()
                 val builder = request.newBuilder()
@@ -73,9 +72,9 @@ object RetrofitManager {
             .cache(Cache(File(appContext.cacheDir, "net_cache"), 10 * 1024 * 1024))
             //添加缓存拦截器 可传入缓存天数
             .addInterceptor(CacheInterceptor(30))
-            .readTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
             // 请求超时时间
-            .connectTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
             .cookieJar(MyCookieJar())
             .build()
 

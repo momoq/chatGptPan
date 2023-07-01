@@ -62,12 +62,12 @@ class ChatAdapter(data: ArrayList<BaseChatBean>) : BaseMultiItemAdapter<BaseChat
                 }
 
                 override fun onBind(holder: ItemAnswer, position: Int, item: BaseChatBean?) {
-//                    if (item!!.answer.isEmpty()) {
-//                        holder.viewAnswerBinding.tvAnswer.text = context.getString( R.string.answer_null)
-//                    } else {
+                    if (item!!.answer.isEmpty()) {
+                        holder.viewAnswerBinding.tvAnswer.text = context.getString( R.string.answer_null)
+                    } else {
                         // 绑定 item 数据
                         holder.viewAnswerBinding.tvAnswer.text = item!!.answer
-//                    }
+                    }
                 }
 
             })
@@ -76,12 +76,12 @@ class ChatAdapter(data: ArrayList<BaseChatBean>) : BaseMultiItemAdapter<BaseChat
                     override fun onBind(holder: ItemHistory, position: Int, item: BaseChatBean?) {
                         //                        // 绑定 item 数据
                         holder.viewItemHistory.tvQuestion.text = item!!.question.trim()
-//                        if (item!!.answer.isEmpty()) {
-//                            holder.viewItemHistory.tvAnswer.text = context.getString( R.string.answer_null)
-//                        } else {
+                        if (item!!.answer.isEmpty()) {
+                            holder.viewItemHistory.tvAnswer.text = context.getString( R.string.answer_null)
+                        } else {
 //                            // 绑定 item 数据
                             holder.viewItemHistory.tvAnswer.text = item!!.answer.trim()
-//                        }
+                        }
 //                        holder.viewItemHistory.tvAnswer.text = item!!.answer.trim()
 
                     }

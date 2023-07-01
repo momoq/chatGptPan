@@ -64,6 +64,8 @@ ext {
 
             eventbus                     : 'org.greenrobot:eventbus-java:3.3.1',
             autosize                     : 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1',
-            blankj                        :'com.blankj:utilcodex:1.31.1'
+            blankj                        :'com.blankj:utilcodex:1.31.1',
+            pgy                         :'com.pgyer:analytics:4.3.3',
+            buglyPo                     :'com.tencent.bugly:crashreport:latest.release'
     ]
 }
