@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/qb_px_80"
+            android:layout_height="@dimen/qb_px_80"
+            android:layout_marginTop="@dimen/qb_px_110"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_25"
+            android:layout_marginTop="@dimen/qb_px_40"
+            android:text="@string/phone_login"
+            android:textColor="@color/cl_text_a1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_icon" />
+
+        <TextView
+            android:id="@+id/text_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_25"
+            android:layout_marginTop="@dimen/qb_px_40"
+            android:text="+86"
+            android:textSize="18sp"
+            android:textColor="@color/cl_text_a2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titleText" />
+
+        <EditText
+            android:background="@null"
+            android:hint="@string/hint_phone"
+            android:layout_marginStart="@dimen/qb_px_12"
+            app:layout_constraintTop_toTopOf="@+id/text_area"
+            app:layout_constraintStart_toEndOf="@+id/text_area"
+            app:layout_constraintBottom_toBottomOf="@+id/text_area"
+            android:id="@+id/et_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            android:layout_marginTop="@dimen/qb_px_10"
+            app:layout_constraintTop_toBottomOf="@+id/text_area"
+            android:background="@color/line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px1"/>
+
+
+
+        <ImageView
+            android:id="@+id/iv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_25"
+            android:layout_marginTop="@dimen/qb_px_35"
+            android:text="+86"
+            android:src="@mipmap/envelope"
+            android:textSize="18sp"
+            android:textColor="@color/cl_text_a2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_area" />
+
+        <EditText
+            android:background="@null"
+            android:hint="@string/hint_code"
+            android:layout_marginStart="@dimen/qb_px_12"
+            app:layout_constraintTop_toTopOf="@+id/iv_code"
+            app:layout_constraintStart_toEndOf="@+id/iv_code"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_code"
+            android:id="@+id/et_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:background="@drawable/code_back"
+            android:paddingTop="@dimen/qb_px_7"
+            android:paddingBottom="@dimen/qb_px_7"
+            android:paddingStart="@dimen/qb_px_18"
+            android:paddingEnd="@dimen/qb_px_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/tv_code"
+            android:layout_marginEnd="@dimen/qb_px_27"
+            app:layout_constraintTop_toTopOf="@+id/iv_code"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_code"
+            android:text="@string/get_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            android:layout_marginTop="@dimen/qb_px_20"
+            app:layout_constraintTop_toBottomOf="@+id/iv_code"
+            android:background="@color/line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px1"/>
+
+
+        <Button
+            android:text="@string/login"
+            android:textSize="18sp"
+            android:id="@+id/bt_login"
+            android:textColor="@color/cl_text_a2"
+            android:background="@drawable/btn_back"
+            android:layout_marginTop="@dimen/qb_px_65"
+            app:layout_constraintTop_toBottomOf="@+id/iv_code"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_agree"
+            android:layout_marginTop="@dimen/qb_px_30"
+            app:layout_constraintTop_toBottomOf="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_marginStart="@dimen/qb_px_30"
+                android:src="@mipmap/subtract"
+                android:id="@+id/checkbox_agree"
+                android:background="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+
+                app:layout_constraintStart_toEndOf="@+id/checkbox_agree"
+                app:layout_constraintTop_toTopOf="@+id/checkbox_agree"
+                app:layout_constraintBottom_toBottomOf="@+id/checkbox_agree"
+                android:text="@string/agree_text"
+                android:id="@+id/tv_agree1"
+                android:textColor="@color/cl_text_a2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="@color/cl_text_a3"
+                app:layout_constraintStart_toEndOf="@+id/tv_agree1"
+                app:layout_constraintTop_toTopOf="@+id/checkbox_agree"
+                app:layout_constraintBottom_toBottomOf="@+id/checkbox_agree"
+                android:text="@string/agree_"
+                android:id="@+id/tv_agree2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                app:layout_constraintStart_toEndOf="@+id/tv_agree2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox_agree"
+                app:layout_constraintBottom_toBottomOf="@+id/checkbox_agree"
+                android:text="@string/agree_add"
+                android:textColor="@color/cl_text_a2"
+                android:id="@+id/tv_agree3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/cl_text_a3"
+                app:layout_constraintStart_toEndOf="@+id/tv_agree3"
+                app:layout_constraintTop_toTopOf="@+id/checkbox_agree"
+                app:layout_constraintBottom_toBottomOf="@+id/checkbox_agree"
+                android:text="@string/privacy"
+                android:id="@+id/tv_agree4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_login_other"
+                android:textColor="@color/cl_text_a2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_agree4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/qb_px_20"
+                android:text="@string/login_wx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/qb_px_20"
+            android:drawableTop="@mipmap/group_285"
+            android:text="@string/text_wx"
+            android:gravity="center"
+            android:textColor="@color/cl_text_a2"
+            app:layout_constraintTop_toBottomOf="@+id/cons_agree"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/iv_wxchat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

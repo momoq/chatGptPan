@@ -5,5 +5,23 @@
     <string name="ask_skill2">可以回答AI、抖音、数字人问题</string>
     <string name="ask_skill3">基于丰年数据库，仅限已投喂资料</string>
     <string name="answer_null">不知道问什么问题？试试：怎么做直播吧！</string>
+    <string name="phone_login">手机号登陆</string>
+    <string name="hint_phone">请输入手机号码</string>
+    <string name="hint_code">请输入验证码</string>
+    <string name="get_code">获取验证码</string>
+    <string name="login">登录</string>
+    <string name="agree_text">我已阅读并接受</string>
+    <string name="agree_">《用户协议》</string>
+    <string name="agree_add">与</string>
+    <string name="privacy">《隐私政策》</string>
+    <string name="login_wx">其它登录方式</string>
+    <string name="text_wx">微信</string>
+    <string name="welcome_text">欢迎来到</string>
+    <string name="welcome_fn">AI丰年</string>
+    <string name="area">这款官方应用程序是免费的，并为您带来OpenAI的最新模型改进。</string>
+    <string name="area_1">AI丰年可能不准确</string>
+    <string name="area_2">AI丰年可能会提供有关人员、地点或事实的不准确信息。</string>
+    <string name="area_3">不要共享敏感信息</string>
+    <string name="area_4">匿名聊天可能会被我们的人工智能培 训师审核，以改进我们的系统。</string>
 
 </resources>

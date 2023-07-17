@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <TextView
+            android:layout_marginTop="@dimen/qb_px_30"
+            android:layout_marginStart="@dimen/qb_px_40"
+            android:textSize="34sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            android:id="@+id/tv_welcome"
+            android:text="@string/welcome_text"
+            android:layout_width="@dimen/qb_px_136"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:paddingEnd="@dimen/qb_px_10"
+            android:gravity="end"
+            app:layout_constraintEnd_toEndOf="@+id/tv_welcome"
+            app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
+            android:textSize="34sp"
+            android:id="@+id/welcome_fn"
+            android:text="@string/welcome_fn"
+            android:layout_width="@dimen/qb_px_136"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/qb_px_30"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/qb_px_40"
+            android:layout_marginEnd="@dimen/qb_px_40"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_fn"
+            android:textSize="16sp"
+            android:id="@+id/tv_area"
+            android:text="@string/area"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_marginTop="@dimen/qb_px_30"
+            android:layout_marginStart="@dimen/qb_px_40"
+            android:src="@mipmap/boxicons_logo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_area"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/iv_area1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginStart="@dimen/qb_px_18"
+            app:layout_constraintStart_toEndOf="@+id/iv_area1"
+            app:layout_constraintTop_toTopOf="@+id/iv_area1"
+            android:id="@+id/area1"
+            android:text="@string/area_1"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/qb_px_18"
+            app:layout_constraintStart_toEndOf="@+id/iv_area1"
+            app:layout_constraintTop_toBottomOf="@+id/area1"
+            android:id="@+id/area2"
+            android:text="@string/area_2"
+            android:textSize="16sp"
+            android:layout_width="@dimen/qb_px_240"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

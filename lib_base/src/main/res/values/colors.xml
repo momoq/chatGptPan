@@ -26,4 +26,9 @@
     <color name="_ff4a57">#ff4a57</color>
     <color name="_ffffff">#ffffff</color>
     <color name="chat_black">#121212</color>
+    <color name="cl_text_a1">#333333</color>
+    <color name="cl_text_a2">#999999</color>
+    <color name="cl_text_a3">#FF3A3A</color>
+    <color name="line">#000000</color>
+
 </resources>

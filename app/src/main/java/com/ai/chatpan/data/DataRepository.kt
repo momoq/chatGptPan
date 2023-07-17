@@ -1,8 +1,10 @@
 package com.ai.chatpan.data
 
 import com.ai.chatpan.data.bean.AnswerHistory
+import com.ai.chatpan.data.bean.AuthBean
 import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
+import com.ai.chatpan.data.bean.VerfiyCode
 import com.ai.chatpan.data.http.Api
 import com.btpj.lib_base.data.bean.ApiResponse
 import com.btpj.lib_base.http.RetrofitManager
@@ -25,5 +27,14 @@ object DataRepository : Api {
     override suspend fun getOuterDialogHistory(roomUUID:String,outerId:String): ApiResponse<List<BaseChatBean>> {
         return service.getOuterDialogHistory(roomUUID,outerId)
     }
+
+    override suspend fun login(requestBody: RequestBody): ApiResponse<AuthBean> {
+        return service.login(requestBody)
+    }
+
+    override suspend fun getCode(phoneAccount: String): ApiResponse<VerfiyCode> {
+        return service.getCode(phoneAccount)
+    }
+
 
 }
