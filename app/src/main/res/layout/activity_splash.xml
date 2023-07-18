@@ -57,6 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textStyle="bold"
             android:layout_marginStart="@dimen/qb_px_18"
             app:layout_constraintStart_toEndOf="@+id/iv_area1"
             app:layout_constraintTop_toTopOf="@+id/iv_area1"
@@ -74,6 +75,53 @@
             android:text="@string/area_2"
             android:textSize="16sp"
             android:layout_width="@dimen/qb_px_240"
+            android:layout_height="wrap_content"/>
+
+
+        <ImageView
+
+            android:layout_marginTop="@dimen/qb_px_60"
+            android:layout_marginStart="@dimen/qb_px_40"
+            android:src="@mipmap/huge_icon"
+            app:layout_constraintTop_toBottomOf="@+id/iv_area1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/iv_err1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/qb_px_18"
+            app:layout_constraintStart_toEndOf="@+id/iv_err1"
+            app:layout_constraintTop_toTopOf="@+id/iv_err1"
+            android:id="@+id/err1"
+            android:text="@string/area_5"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/qb_px_18"
+            app:layout_constraintStart_toEndOf="@+id/iv_err1"
+            app:layout_constraintTop_toBottomOf="@+id/err1"
+            android:id="@+id/err2"
+            android:text="@string/area_6"
+            android:textSize="16sp"
+            android:layout_width="@dimen/qb_px_240"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:text="@string/goto_main"
+            android:textSize="18sp"
+            android:layout_marginBottom="@dimen/qb_px_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/bt_login"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_back"
+            android:layout_marginTop="@dimen/qb_px_65"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

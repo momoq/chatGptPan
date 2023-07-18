@@ -42,7 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.privacy.PrivacyActivity"/>
+        <activity android:name=".ui.privacy.UserGuideActivity"/>
+        <activity android:name=".ui.auth.SplashActivity">
 
         </activity>
 

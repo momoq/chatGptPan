@@ -10,10 +10,12 @@
     <string name="hint_code">请输入验证码</string>
     <string name="get_code">获取验证码</string>
     <string name="login">登录</string>
+    <string name="goto_main">进入AI丰年</string>
     <string name="agree_text">我已阅读并接受</string>
     <string name="agree_">《用户协议》</string>
     <string name="agree_add">与</string>
     <string name="privacy">《隐私政策》</string>
+    <string name="user_detail">用户协议</string>
     <string name="login_wx">其它登录方式</string>
     <string name="text_wx">微信</string>
     <string name="welcome_text">欢迎来到</string>
@@ -23,5 +25,8 @@
     <string name="area_2">AI丰年可能会提供有关人员、地点或事实的不准确信息。</string>
     <string name="area_3">不要共享敏感信息</string>
     <string name="area_4">匿名聊天可能会被我们的人工智能培 训师审核，以改进我们的系统。</string>
+    <string name="area_5">不要共享敏感信息</string>
+    <string name="area_6">匿名聊天可能会被我们的人工智能培 训师审核，以改进我们的系统。</string>
+    <string name="privacy_detail">欢迎来到AI丰年！我们是一家致力于为用户提供智能化助手的公司。AI丰年是我们的旗舰产品，它是一款基于人工智能的应用程序，旨在提供智能对话、任务管理、日程管理和搜索等功能，以帮助用户更高效地管理日常生活和工作。 我们的使命是通过结合自然语言处理和机器学习技术，为用户提供个性化、智能化的服务。无论是回答常见问题、提供实时信息，还是帮助用户组织和管理任务、日程安排，AI丰年都可以成为您的得力助手。 在AI丰年中，我们注重用户体验和简便性。您可以与应用进行自然对话，就像与一个朋友交流一样。无论是在学习中遇到困惑、需要管理工作任务，还是想要组织自己的日程安排，AI丰年都将提供精准的回答和实用的功能。 我们深知用户的隐私和数据安全的重要性。因此，我们采取了严格的安全措施来保护您的个人信息和数据。您可以放心地使用AI丰年，享受智能化助手带来的便利和效率，同时保持数据的安全和隐私。 无论您是学生、专业人士、创业家还是创意工作者，AI丰年都将成为您的得力助手。我们不断迭代和改进产品，以满足用户不断变化的需求。我们相信，AI丰年将为您带来更高效、更智能的生活体验。 感谢您选择AI丰年，我们期待能够与您一同探索智能化的未来！</string>
 
 </resources>
