@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ai.chatpan.R
 import com.ai.chatpan.base.BaseActivity
+import com.ai.chatpan.data.bean.AuthBean
 import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
 import com.ai.chatpan.databinding.ActivityMainBinding
 import com.ai.chatpan.ui.main.ChatAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.blankj.utilcode.util.DeviceUtils
+import com.blankj.utilcode.util.GsonUtils
+import com.btpj.lib_base.ext.toJson
 import com.btpj.lib_base.utils.LogUtil
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
@@ -25,7 +28,9 @@ import java.util.regex.Pattern
 
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.activity_main) {
-    var subjectId: String = "111"
+
+
+
     var roomUUID: String = "64f8791f-c1de-427d-990b-9cc7eb8ff472"
     var assistantUUID: String = "18914f7a-9a0c-4314-9f3b-365481809b97"
     var chatList = ArrayList<BaseChatBean>()
@@ -33,10 +38,12 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
     var TAG = "MainActivity"
     var deviceId: String = DeviceUtils.getUniqueDeviceId()
     var isAsked = MMKV.defaultMMKV().decodeBool("ChatPanInstall")
+    var subjectId =""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         CrashReport.initCrashReport(applicationContext, "83868d6604", false)
-
+         subjectId = intent.getStringExtra("userID")!!
     }
 
     override fun onPause() {

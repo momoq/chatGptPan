@@ -20,14 +20,11 @@ public class App extends BaseApp {
 
     }
 
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(base);
         CrashReport.initCrashReport(getApplicationContext(), "83868d6604", true);
-//        new PgyerSDKManager.Init()
-//                .setContext(base) //设置上下问对象
-//                .enable(Features.CHECK_UPDATE)
-//                .start();
     }
 }

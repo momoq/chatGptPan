@@ -13,7 +13,7 @@ class PrivacyActivity :AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_privacy)
-
+        findViewById<TextView>(R.id.tv_title).setText(getString(R.string.privacy_title))
         findViewById<ImageView>(R.id.iv_back).setOnClickListener {
             finish()
         }

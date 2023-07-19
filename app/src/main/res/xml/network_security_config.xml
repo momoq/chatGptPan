@@ -5,4 +5,7 @@
             <certificates src="system" />
         </trust-anchors>
     </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">aah98b3n9jqo.ngrok.xiaomiqiu123.top</domain>
+    </domain-config>
 </network-security-config>

@@ -17,20 +17,21 @@ import okhttp3.RequestBody
  *
  * @author LTP  2022/3/23
  */
-object DataRepository : Api {
-
-    private val service by lazy { RetrofitManager.getService(Api::class.java) }
+object DataRepositoryV2 : ApiV2 {
 
 
+    private val serviceUser by lazy { RetrofitManagerV2.getService(ApiV2::class.java) }
 
-    override suspend fun askQuestion(requestBody: RequestBody): ApiResponse<BaseChatBean> {
-       return service.askQuestion(requestBody)
+
+
+
+    override suspend fun sendCmsCode(requestBody: RequestBody): ApiResponse<String> {
+        return serviceUser.sendCmsCode(requestBody)
     }
 
-    override suspend fun getOuterDialogHistory(roomUUID:String,outerId:String): ApiResponse<List<BaseChatBean>> {
-        return service.getOuterDialogHistory(roomUUID,outerId)
+    override suspend fun login(requestBody: RequestBody): ApiResponse<AuthBean> {
+        return serviceUser.login(requestBody)
     }
-
 
 
 }

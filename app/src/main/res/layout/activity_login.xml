@@ -44,8 +44,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_titleText" />
 
         <EditText
+            android:inputType="phone"
+            android:maxLength="11"
             android:background="@null"
             android:hint="@string/hint_phone"
+            android:textColor="@color/black"
             android:layout_marginStart="@dimen/qb_px_12"
             app:layout_constraintTop_toTopOf="@+id/text_area"
             app:layout_constraintStart_toEndOf="@+id/text_area"
@@ -72,6 +75,7 @@
             android:layout_marginStart="@dimen/qb_px_25"
             android:layout_marginTop="@dimen/qb_px_35"
             android:text="+86"
+
             android:src="@mipmap/envelope"
             android:textSize="18sp"
             android:textColor="@color/cl_text_a2"
@@ -81,6 +85,7 @@
         <EditText
             android:background="@null"
             android:hint="@string/hint_code"
+            android:textColor="@color/black"
             android:layout_marginStart="@dimen/qb_px_12"
             app:layout_constraintTop_toTopOf="@+id/iv_code"
             app:layout_constraintStart_toEndOf="@+id/iv_code"
@@ -91,7 +96,7 @@
 
         <TextView
             android:textColor="@color/white"
-            android:background="@drawable/code_back"
+            android:background="@drawable/bt_back"
             android:paddingTop="@dimen/qb_px_7"
             android:paddingBottom="@dimen/qb_px_7"
             android:paddingStart="@dimen/qb_px_18"
@@ -102,6 +107,7 @@
             app:layout_constraintTop_toTopOf="@+id/iv_code"
             app:layout_constraintBottom_toBottomOf="@+id/iv_code"
             android:text="@string/get_code"
+            android:minWidth="@dimen/qb_px_100"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -119,8 +125,9 @@
             android:text="@string/login"
             android:textSize="18sp"
             android:id="@+id/bt_login"
-            android:textColor="@color/cl_text_a2"
-            android:background="@drawable/btn_back"
+            android:textColor="@color/_ffffff"
+            android:background="@drawable/bt_back"
+
             android:layout_marginTop="@dimen/qb_px_65"
             app:layout_constraintTop_toBottomOf="@+id/iv_code"
             android:layout_marginStart="@dimen/qb_px_20"
@@ -135,17 +142,19 @@
             android:layout_height="wrap_content">
 
             <CheckBox
+                android:button="@drawable/check_box_selector"
                 android:layout_marginStart="@dimen/qb_px_30"
                 android:src="@mipmap/subtract"
                 android:id="@+id/checkbox_agree"
                 android:background="@null"
+                android:gravity="center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
-
+            android:layout_marginStart="@dimen/qb_px_8"
                 app:layout_constraintStart_toEndOf="@+id/checkbox_agree"
                 app:layout_constraintTop_toTopOf="@+id/checkbox_agree"
                 app:layout_constraintBottom_toBottomOf="@+id/checkbox_agree"

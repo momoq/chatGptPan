@@ -16,6 +16,8 @@
     <string name="agree_add">与</string>
     <string name="privacy">《隐私政策》</string>
     <string name="user_detail">用户协议</string>
+    <string name="privacy_title">隐私协议</string>
+    <string name="about_us">关于我们</string>
     <string name="login_wx">其它登录方式</string>
     <string name="text_wx">微信</string>
     <string name="welcome_text">欢迎来到</string>

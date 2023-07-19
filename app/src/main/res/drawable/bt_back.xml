@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 当控件处于不启用状态（disabled）时 -->
+    <item android:drawable="@drawable/code_enable_back" android:state_enabled="false" />
+
+    <!-- 当控件处于启用状态（enabled）且未选中时 -->
+    <item android:drawable="@drawable/code_enable_back" android:state_enabled="true" android:state_selected="false" />
+
+    <!-- 当控件处于启用状态（enabled）且选中时 -->
+    <item android:drawable="@drawable/code_able_back" android:state_enabled="true" android:state_selected="true" />
+
+
+
+    </selector>

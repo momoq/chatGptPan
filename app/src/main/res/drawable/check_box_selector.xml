@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- CheckBox 未选中时的样式 -->
+    <item android:drawable="@mipmap/vector" android:state_checked="false" />
+
+    <!-- CheckBox 选中时的样式 -->
+    <item android:drawable="@mipmap/subtract" android:state_checked="true" />
+
+    <!-- 默认样式 -->
+    <item android:drawable="@mipmap/subtract" />
+</selector>

@@ -16,21 +16,16 @@ import retrofit2.http.*
  *
  * @author LTP  2022/3/21
  */
-interface Api {
+interface ApiV2 {
 
-    /** 提问 */
-    @POST("askByOuterId")
-    suspend fun askQuestion(
-        @Body  requestBody: RequestBody
-    ): ApiResponse<BaseChatBean>
+
+    @POST("authorization/register/sendCmsCode")
+    suspend fun sendCmsCode(@Body requestBody: RequestBody):ApiResponse<String>
 
 
 
-    /** 历史问题和答案 */
-    @GET("room/outerDialogHistory")
-    suspend fun getOuterDialogHistory(  @Query("roomUUID") roomUUID:String,  @Query("outerId") outerId:String): ApiResponse<List<BaseChatBean>>
-
-
+    @POST("authorization/register/smsLogin")
+    suspend fun login(@Body requestBody: RequestBody):ApiResponse<AuthBean>
 
 
 }

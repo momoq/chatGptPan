@@ -80,7 +80,6 @@ abstract class BaseVMBActivity<VM : BaseViewModel, B : ViewDataBinding>(private 
             exception.observe(this@BaseVMBActivity) {
                 requestError(it.message)
                 LogUtil.e("网络请求错误：${it.message}")
-                PgyerSDKManager.reportException(it)
                 when (it) {
                     is SocketTimeoutException -> {
                       /*  ToastUtil.showShort(

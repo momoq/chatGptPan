@@ -36,6 +36,13 @@ object IpManager {
         return mmkv.decodeString(KEY_DEFAULT_IP_AND_PORT, DEFAULT_IP_ADDRESS_REMOTE)!!
     }
 
+    /**
+     * 用户体系BaseUrl
+     */
+    fun getUserIp():String{
+        return "http://aah98b3n9jqo.ngrok.xiaomiqiu123.top/"
+    }
+
     /** 存储使用过的IP集 */
     fun saveIPSet(ipSet: MutableSet<String>) {
         mmkv.encode(KEY_IP_SET, ipSet)
