@@ -36,17 +36,27 @@
                 app:lottie_loop="false" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:layout_marginEnd="@dimen/qb_px_15"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@mipmap/more_square"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rl_my_answer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/qb_px_5"
             android:layout_marginBottom="@dimen/qb_px_10"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/cons_bottom"
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_more"
             tools:listitem="@layout/item_question" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

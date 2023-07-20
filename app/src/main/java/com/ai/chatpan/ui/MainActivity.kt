@@ -1,6 +1,7 @@
 package com.ai.chatpan.ui
 
 import android.animation.Animator
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -8,6 +9,7 @@ import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ai.chatpan.R
@@ -17,6 +19,7 @@ import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
 import com.ai.chatpan.databinding.ActivityMainBinding
 import com.ai.chatpan.ui.main.ChatAdapter
+import com.ai.chatpan.ui.privacy.SettingActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.blankj.utilcode.util.DeviceUtils
 import com.blankj.utilcode.util.GsonUtils
@@ -30,7 +33,6 @@ import java.util.regex.Pattern
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.activity_main) {
 
 
-
     var roomUUID: String = "64f8791f-c1de-427d-990b-9cc7eb8ff472"
     var assistantUUID: String = "18914f7a-9a0c-4314-9f3b-365481809b97"
     var chatList = ArrayList<BaseChatBean>()
@@ -38,12 +40,12 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
     var TAG = "MainActivity"
     var deviceId: String = DeviceUtils.getUniqueDeviceId()
     var isAsked = MMKV.defaultMMKV().decodeBool("ChatPanInstall")
-    var subjectId =""
+    var userId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         CrashReport.initCrashReport(applicationContext, "83868d6604", false)
-         subjectId = intent.getStringExtra("userID")!!
+        userId = intent.getStringExtra("userID")!!
     }
 
     override fun onPause() {
@@ -70,15 +72,16 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
 
                 lottieAnimationView.postDelayed(Runnable {
                     lottieAnimationView.visibility = View.GONE
-                    mBinding.etInput!!.isEnabled =true
+                    mBinding.etInput!!.isEnabled = true
                     if (!isAsked) {
                         mBinding!!.consFirst!!.visibility = View.VISIBLE
                     } else {
                         mBinding.consFirst.visibility = View.GONE
                         // 动画播放完成时的回调
-                        mViewModel.
-                        getOuterDialogHistory("64f8791f-c1de-427d-990b-9cc7eb8ff472",
-                            deviceId)
+                        mViewModel.getOuterDialogHistory(
+                            "64f8791f-c1de-427d-990b-9cc7eb8ff472",
+                            deviceId
+                        )
                     }
                 }, 1000)
 
@@ -87,7 +90,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
 
             override fun onAnimationCancel(animation: Animator) {
                 // 动画被取消时的回调
-                mBinding.etInput.isEnabled =true
+                mBinding.etInput.isEnabled = true
             }
 
             override fun onAnimationRepeat(animation: Animator) {
@@ -103,28 +106,29 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
         findViewById<RecyclerView>(R.id.rl_my_answer).layoutManager = LinearLayoutManager(context)
         mBinding.apply {
             etInput.filters = arrayOf(filter)
-            etInput.isEnabled =false
+            etInput.isEnabled = false
 //            rlMyAnswer.layoutManager = LinearLayoutManager(context)
             rlMyAnswer.adapter = mAdapter
             mAdapter.submitList(chatList)
 
             ivAsk.setOnClickListener {
                 mViewModel.apply {
-                    if ( etInput.text.toString().isEmpty()){
+                    if (etInput.text.toString().isEmpty()) {
                         return@apply
                     }
-                    askQuestion( subjectId,
-                        deviceId,
+                    askQuestion(
+                        userId,
                         roomUUID,
                         assistantUUID,
-                        etInput.text.toString().trim())
+                        etInput.text.toString().trim()
+                    )
                 }
-                if (!isAsked){
-                    MMKV.defaultMMKV().encode("ChatPanInstall",true)
+                if (!isAsked) {
+                    MMKV.defaultMMKV().encode("ChatPanInstall", true)
                 }
 
 
-                if ( !etInput.text.toString().isEmpty()){
+                if (!etInput.text.toString().isEmpty()) {
                     var chatBean = ChatPanBean()
                     chatBean.type = 0
                     chatBean.question = etInput.text.toString().trim()
@@ -134,13 +138,17 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
                     val lastItemPosition: Int = mAdapter.getItemCount() - 1
                     mBinding.rlMyAnswer.scrollToPosition(lastItemPosition)
                     etInput.text.clear()
-                    val mInputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                     mInputMethodManager.hideSoftInputFromWindow(context.currentFocus!!.windowToken, 0)
+                    val mInputMethodManager =
+                        getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                    mInputMethodManager.hideSoftInputFromWindow(
+                        context.currentFocus!!.windowToken,
+                        0
+                    )
                 }
 
             }
 
-            etInput.addTextChangedListener(object :TextWatcher{
+            etInput.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
@@ -156,6 +164,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
 
         }
 
+        findViewById<ImageView>(R.id.iv_more).setOnClickListener {
+            val intent = Intent(this, SettingActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }
@@ -181,7 +193,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
             mAdapter.notifyDataSetChanged()
 
             val lastItemPosition: Int = mAdapter.getItemCount() - 1
-            mBinding!!.rlMyAnswer!!.scrollBy(0,500)
+            mBinding!!.rlMyAnswer!!.scrollBy(0, 500)
 
         }
 

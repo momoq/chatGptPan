@@ -10,6 +10,13 @@ public class RequestBean {
         this.assistantUUID = assistantUUID;
         this.question = question;
     }
+    public RequestBean( String outerId, String roomUUID, String assistantUUID, String question) {
+        this.outerId = outerId;
+        this.roomUUID = roomUUID;
+        this.assistantUUID = assistantUUID;
+        this.question = question;
+    }
+
 
     /**
      * outerId : ${房间 uuid}

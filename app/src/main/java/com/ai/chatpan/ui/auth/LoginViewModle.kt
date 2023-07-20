@@ -67,9 +67,6 @@ class LoginViewModle : BaseViewModel() {
             })
 
 
-
-
-
             LogUtil.e("JSON :" + json)
         })
 

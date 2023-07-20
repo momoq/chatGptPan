@@ -16,6 +16,7 @@ import com.ai.chatpan.ui.MainActivity
 import com.ai.chatpan.ui.privacy.AboutUsActivity
 import com.ai.chatpan.ui.privacy.PrivacyActivity
 import com.ai.chatpan.ui.privacy.UserGuideActivity
+import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.RegexUtils
 import com.btpj.lib_base.utils.LogUtil
 import com.btpj.lib_base.utils.ToastUtil
@@ -40,6 +41,7 @@ class LoginActivity : BaseActivity<LoginViewModle, ActivityLoginBinding>(R.layou
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("userID",decodeString)
             startActivity(intent)
+            finish()
         }
     }
     override fun initView(savedInstanceState: Bundle?) {
@@ -49,14 +51,13 @@ class LoginActivity : BaseActivity<LoginViewModle, ActivityLoginBinding>(R.layou
         findViewById<TextView>(R.id.tv_agree2).setOnClickListener {
             val intent = Intent(this, AboutUsActivity::class.java)
             startActivity(intent)
-
+            finish()
         }
 
         findViewById<TextView>(R.id.tv_agree4).setOnClickListener {
 
             val intent = Intent(this, UserGuideActivity::class.java)
             startActivity(intent)
-
         }
 
         var etPhone = findViewById<EditText>(R.id.et_phone)
@@ -126,10 +127,12 @@ class LoginActivity : BaseActivity<LoginViewModle, ActivityLoginBinding>(R.layou
             isSendSMS = true
         }
         mViewModel.user.observeForever {
+            LogUtils.d("登录成功-------跳转到欢迎页。")
             MMKV.defaultMMKV().encode("userID",it.userInfo.userId)
             val intent = Intent(this, SplashActivity::class.java)
             intent.putExtra("userID",it.userInfo.userId)
             startActivity(intent)
+            finish()
         }
 
     }

@@ -50,6 +50,7 @@
         <activity android:name=".ui.auth.SplashActivity">
 
         </activity>
+        <activity android:name=".ui.privacy.SettingActivity"/>
 
     </application>
 

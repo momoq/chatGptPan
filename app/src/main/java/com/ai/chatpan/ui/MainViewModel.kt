@@ -39,14 +39,13 @@ class MainViewModel : BaseViewModel() {
     }
 
     fun askQuestion(
-        subjectId: String,
         outerId: String,
         roomUUID: String,
         assistantUUID: String,
         question: String
     ) {
         launch({
-            var requestBean = RequestBean(subjectId, outerId, roomUUID, assistantUUID, question)
+            var requestBean = RequestBean( outerId, roomUUID, assistantUUID, question)
             var json = Gson().toJson(requestBean)
             LogUtil.e("JSON :" + json)
             val mediaType: MediaType = "application/json; charset=utf-8".toMediaTypeOrNull()!!
