@@ -3,12 +3,15 @@ package com.ai.chatpan.data.bean;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class AuthBean implements Serializable {
 
 
     @SerializedName("userInfo")
     private UserInfoDTO userInfo;
+    @SerializedName("wxInfo")
+    private WxInfoDTO wxInfo;
     @SerializedName("token")
     private String token;
 
@@ -26,6 +29,128 @@ public class AuthBean implements Serializable {
 
     public void setToken(String token) {
         this.token = token;
+    }
+    public static class WxInfoDTO implements Serializable {
+
+
+        @SerializedName("openid")
+        private String openid;
+        @SerializedName("nickname")
+        private String nickname;
+        @SerializedName("sex")
+        private Integer sex;
+        @SerializedName("language")
+        private String language;
+        @SerializedName("city")
+        private String city;
+        @SerializedName("province")
+        private String province;
+        @SerializedName("country")
+        private String country;
+        @SerializedName("headimgurl")
+        private String headimgurl;
+        @SerializedName("unionid")
+        private String unionid;
+        @SerializedName("privilege")
+        private List<?> privilege;
+
+
+
+        public String getOpenid() {
+            return openid;
+        }
+
+        public void setOpenid(String openid) {
+            this.openid = openid;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setNickname(String nickname) {
+            this.nickname = nickname;
+        }
+
+        public Integer getSex() {
+            return sex;
+        }
+
+        public void setSex(Integer sex) {
+            this.sex = sex;
+        }
+
+        public String getLanguage() {
+            return language;
+        }
+
+        public void setLanguage(String language) {
+            this.language = language;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
+        public String getProvince() {
+            return province;
+        }
+
+        public void setProvince(String province) {
+            this.province = province;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
+        public String getHeadimgurl() {
+            return headimgurl;
+        }
+
+        public void setHeadimgurl(String headimgurl) {
+            this.headimgurl = headimgurl;
+        }
+
+        public String getUnionid() {
+            return unionid;
+        }
+
+        public void setUnionid(String unionid) {
+            this.unionid = unionid;
+        }
+
+        public List<?> getPrivilege() {
+            return privilege;
+        }
+
+        public void setPrivilege(List<?> privilege) {
+            this.privilege = privilege;
+        }
+
+        @Override
+        public String toString() {
+            return "WxInfoDTO{" +
+                    "openid='" + openid + '\'' +
+                    ", nickname='" + nickname + '\'' +
+                    ", sex=" + sex +
+                    ", language='" + language + '\'' +
+                    ", city='" + city + '\'' +
+                    ", province='" + province + '\'' +
+                    ", country='" + country + '\'' +
+                    ", headimgurl='" + headimgurl + '\'' +
+                    ", unionid='" + unionid + '\'' +
+                    ", privilege=" + privilege +
+                    '}';
+        }
     }
 
     public static class UserInfoDTO implements Serializable {

@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("userID", userID)
             startActivity(intent)
-
+            finish()
         }
     }
 }

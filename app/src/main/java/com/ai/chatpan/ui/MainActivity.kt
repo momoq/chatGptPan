@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ai.chatpan.R
 import com.ai.chatpan.base.BaseActivity
-import com.ai.chatpan.data.bean.AuthBean
 import com.ai.chatpan.data.bean.BaseChatBean
 import com.ai.chatpan.data.bean.ChatPanBean
 import com.ai.chatpan.databinding.ActivityMainBinding
@@ -22,8 +21,6 @@ import com.ai.chatpan.ui.main.ChatAdapter
 import com.ai.chatpan.ui.privacy.SettingActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.blankj.utilcode.util.DeviceUtils
-import com.blankj.utilcode.util.GsonUtils
-import com.btpj.lib_base.ext.toJson
 import com.btpj.lib_base.utils.LogUtil
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
@@ -47,6 +44,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
         CrashReport.initCrashReport(applicationContext, "83868d6604", false)
         userId = intent.getStringExtra("userID")!!
     }
+
+
+
 
     override fun onPause() {
         super.onPause()

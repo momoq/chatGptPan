@@ -4,11 +4,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.ai.chatpan.R
+import com.ai.chatpan.ui.auth.LoginActivity
+import com.tencent.mmkv.MMKV
 
 
 class SettingActivity :AppCompatActivity() {
@@ -26,6 +29,12 @@ class SettingActivity :AppCompatActivity() {
         findViewById<ImageView>(R.id.iv_back).setOnClickListener {
 
            finish()
+        }
+        findViewById<Button>(R.id.bt_login).setOnClickListener {
+            MMKV.defaultMMKV().clearAll()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         findViewById<ConstraintLayout>(R.id.cons_2).setOnClickListener {

@@ -20,12 +20,14 @@ interface ApiV2 {
 
 
     @POST("authorization/register/sendCmsCode")
-    suspend fun sendCmsCode(@Body requestBody: RequestBody):ApiResponse<String>
-
+    suspend fun sendCmsCode(@Body requestBody: RequestBody): ApiResponse<String>
 
 
     @POST("authorization/register/smsLogin")
-    suspend fun login(@Body requestBody: RequestBody):ApiResponse<AuthBean>
+    suspend fun login(@Body requestBody: RequestBody): ApiResponse<AuthBean>
+
+    @GET("authorization/wx/wechat-login")
+    suspend fun wxLogin(@Query("code") code: String):ApiResponse<AuthBean>
 
 
 }

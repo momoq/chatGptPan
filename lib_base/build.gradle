@@ -74,4 +74,5 @@ dependencies {
 
     api rootProject.ext.dependencies.pgy
     api rootProject.ext.dependencies.buglyPo
+    api rootProject.ext.dependencies.eventbus
 }

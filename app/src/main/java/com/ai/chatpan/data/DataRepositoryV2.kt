@@ -33,5 +33,9 @@ object DataRepositoryV2 : ApiV2 {
         return serviceUser.login(requestBody)
     }
 
+    override suspend fun wxLogin(code: String): ApiResponse<AuthBean> {
+        return serviceUser.wxLogin(code)
+    }
+
 
 }

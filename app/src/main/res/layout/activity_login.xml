@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools">
 
     <data></data>
@@ -201,19 +202,27 @@
                 android:layout_marginTop="@dimen/qb_px_20"
                 android:text="@string/login_wx"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
+        <ImageView
             android:layout_marginTop="@dimen/qb_px_20"
-            android:drawableTop="@mipmap/group_285"
-            android:text="@string/text_wx"
-            android:gravity="center"
-            android:textColor="@color/cl_text_a2"
+            android:id="@+id/iv_wxchat"
+            android:src="@mipmap/group_285"
             app:layout_constraintTop_toBottomOf="@+id/cons_agree"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/iv_wxchat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="@string/text_wx"
+            android:gravity="center"
+            android:textColor="@color/cl_text_a2"
+            app:layout_constraintTop_toBottomOf="@+id/iv_wxchat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/tv_wxchat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

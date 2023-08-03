@@ -2,14 +2,10 @@ package com.ai.chatpan.ui.auth
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import com.ai.chatpan.base.App
 import com.ai.chatpan.data.DataRepositoryV2
 import com.ai.chatpan.data.bean.AuthBean
 import com.ai.chatpan.data.bean.AuthRequest
-import com.ai.chatpan.data.bean.BaseChatBean
-import com.ai.chatpan.data.bean.RequestBean
 import com.ai.chatpan.data.bean.SendSMSCodeRequest
-import com.blankj.utilcode.util.SPUtils
 import com.btpj.lib_base.base.BaseViewModel
 import com.btpj.lib_base.ext.handleRequest
 import com.btpj.lib_base.ext.launch
@@ -72,4 +68,15 @@ class LoginViewModle : BaseViewModel() {
 
     }
 
+
+    fun wxAuth(code:String){
+        launch({
+            handleRequest(DataRepositoryV2.wxLogin(code), {
+                LogUtil.e("微信登录成功 :" + it.toJson())
+                MMKV.defaultMMKV().encode("userInfo", it.toJson())
+                _user.value = it.data!!
+            })
+
+        })
+    }
 }

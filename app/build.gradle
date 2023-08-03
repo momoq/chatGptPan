@@ -13,8 +13,8 @@ android {
         applicationId "com.ai.chatpan"
         minSdk 24
         targetSdk 33
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
@@ -28,6 +28,24 @@ android {
     dataBinding {
         enabled = true
     }
+
+    signingConfigs{
+        debug {
+            storeFile file("../chatPanKeyStore.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+
+        // 配置 release 的签名
+        release {
+            storeFile file("../chatPanKeyStore.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         debug {
             // 设置调试时包名后添加debug以防止与正式版安装冲突
@@ -38,9 +56,11 @@ android {
             shrinkResources false // 启动资源压缩
             zipAlignEnabled false // 开启zipalign优化
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
 
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false // 开启混淆
             shrinkResources false // 启动资源压缩
             zipAlignEnabled false // 开启zipalign优化
@@ -54,6 +74,9 @@ android {
             }
         }
     }
+
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -84,13 +107,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.android.support:multidex:1.0.3'
 
-    implementation rootProject.ext.dependencies.eventbus
 
+    implementation("org.greenrobot:eventbus:3.3.1")
 //    implementation 'com.tencent.bugly:crashreport:latest.release'
 
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
 
     implementation 'com.airbnb.android:lottie:6.0.1'
-
+    api 'com.tencent.mm.opensdk:wechat-sdk-android:+'
 
 }

@@ -5,4 +5,6 @@
     <color name="ai_back">#FF000000</color>
     <color name="text_color1">#4dffffff</color>
     <color name="line_color">#595959</color>
+    <color name="toast_color">#FF3A3A</color>
+    <color name="toast_bg_color">#FFF5F5</color>
 </resources>
